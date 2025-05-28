@@ -1,3 +1,6 @@
+# Aqui seria como se fosse a View.
+# Logo, devo enviar solicitações ao controler!!
+
 from flask import Blueprint, render_template,request
 
 # Imporanto o "banco de dados":
@@ -13,10 +16,9 @@ tabela_route = Blueprint('tabela',__name__)
 def home():
     if request.method == "POST":
         # Aqui chamaria o controlador para acessar o backend.
-        nome = request.form.get('name')
-        email = request.form.get('email')
-        novo_usu = {'nome': nome, 'email':email}
-        CLIENTES.append(novo_usu)
+        from controllers.cliente import adicionar_cliente
+        adicionar_cliente()
+
     return render_template("index.html")
 
 @tabela_route.route('/tabela', methods=['GET'])

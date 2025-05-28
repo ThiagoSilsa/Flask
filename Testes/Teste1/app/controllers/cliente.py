@@ -8,10 +8,16 @@ from flask import request
 def adicionar_cliente():
     # Dever do controlador é adquirir dados e mandar para o backend
     # Adquirir dados
-    nome = request.form.get('name')
-    email = request.form.get('email')
+    nome1 = request.form.get('name')
+    email1 = request.form.get('email')
     # Bandando pro back
-    novo_usu = Cliente(nome, email)
     # Executando função!
-    novo_usu.adicionar_cliente()
+    Cliente.adicionar_cliente(nome1,email1)
+
+def buscar_clientes():
+    # Solicitou ao backend a lista:
+    lista_clientes = Cliente.buscar_clientes()
+    # Retornar a lista para o front poder usa-la
+    return lista_clientes
+    
 

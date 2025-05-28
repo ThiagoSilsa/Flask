@@ -4,7 +4,7 @@
 from flask import Blueprint, render_template,request
 
 # Imporanto o "banco de dados":
-from database.database import CLIENTES
+# from database.database import db
 
 
 
@@ -23,5 +23,8 @@ def home():
 
 @tabela_route.route('/tabela', methods=['GET'])
 def tabela():
-    # enviando a tabela clientes para a tabela
-    return render_template('tabela.html', clientes = CLIENTES)
+    # Chamar controlador:
+    from controllers.cliente import buscar_clientes
+    lista_clientes = buscar_clientes()
+    # Mando pro front
+    return render_template('tabela.html', clientes = lista_clientes)
